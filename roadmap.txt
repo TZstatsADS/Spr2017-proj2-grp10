@@ -1,0 +1,4 @@
+This is the first group meeting scheduled on Fri, 10th Feb.
+
+Idea in mind:
+Qingyuan: Do a shinyApp on showing popular baby name across years.
