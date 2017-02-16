@@ -1,0 +1,35 @@
+# Load required libraries
+packages.used=c("readr", "dplyr")
+packages.needed=setdiff(packages.used, 
+                        intersect(installed.packages()[,1], 
+                                  packages.used))
+if(length(packages.needed)>0){
+  install.packages(packages.needed, dependencies = TRUE,
+                   repos='http://cran.us.r-project.org')
+}
+
+
+library(dplyr)
+library(data.table)
+
+# Read in files
+howdy<-fread("MERGED2014_15_PP.csv",select=4,col.names="Name")
+howdy$Ranking<-rep(NA,nrow(howdy))
+howdy$ID<-seq(1:nrow(howdy))
+ranking<-fread("ranking_forbes_2016.csv",skip=1)
+result1<-
+  left_join(ranking,howdy,by="Name")
+
+result2<-result1%>%
+  filter(is.na(ID))%>%
+  rowwise()%>%
+  mutate(ID=agrep(Name,howdy$Name,ignore.case=T,max.distance = 0.1, useBytes = FALSE)[1])
+  
+result<-bind_rows(result1,result2)%>%
+  filter(!is.na(ID))%>%
+  mutate(Rank=seq(1:nrow(result)))
+
+output <- left_join(howdy,result[,c(1,5)],by="ID")%>%
+  select(Name,Rank)%>%
+  write_csv(".../output/name_ranking.csv")
+
