@@ -29,10 +29,11 @@ result2<-result1%>%
   
 result<-bind_rows(result1,result2)%>%
   filter(!is.na(ID))%>%
+  arrange(Rank)
   mutate(Rank=seq(1:nrow(result)))
+  select(Rank,ID)
 
 # Write output
-output <- left_join(howdy,result[,c(1,5)],by="ID")%>%
-  select(Name,Rank)%>%
+output <- left_join(howdy,result,by="ID") %>%
   write_csv(".../output/name_ranking.csv")
 
