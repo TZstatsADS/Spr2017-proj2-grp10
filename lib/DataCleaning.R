@@ -27,9 +27,10 @@ educ_update$Major_History <- educ$CIP54BACHL
 #
 #
 
-ranking_data <- read.csv("../output/name_ranking.csv")
+#ranking_data <- read.csv("../output/name_ranking.csv")
+# solve for comma slash problem
 ranking <- ranking[order(ranking$Name), ]
-a <- ranking_data[order(ranking_data$Name), ]
+a <- educ_update[order(educ_update$Name), ]
 a$Name <- gsub("-", ", ", a$Name)
 total <- merge(ranking, a, by = "Name")
 # ranking_edu <- total[!is.na(total$Rank), ]
