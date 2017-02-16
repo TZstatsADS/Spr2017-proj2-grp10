@@ -1,5 +1,5 @@
 # Load required libraries
-packages.used=c("readr", "dplyr")
+packages.used=c("readr", "data.table")
 packages.needed=setdiff(packages.used, 
                         intersect(installed.packages()[,1], 
                                   packages.used))
@@ -17,6 +17,8 @@ howdy<-fread("MERGED2014_15_PP.csv",select=4,col.names="Name")
 howdy$Ranking<-rep(NA,nrow(howdy))
 howdy$ID<-seq(1:nrow(howdy))
 ranking<-fread("ranking_forbes_2016.csv",skip=1)
+
+# Merge the two datasets
 result1<-
   left_join(ranking,howdy,by="Name")
 
@@ -29,6 +31,7 @@ result<-bind_rows(result1,result2)%>%
   filter(!is.na(ID))%>%
   mutate(Rank=seq(1:nrow(result)))
 
+# Write output
 output <- left_join(howdy,result[,c(1,5)],by="ID")%>%
   select(Name,Rank)%>%
   write_csv(".../output/name_ranking.csv")
