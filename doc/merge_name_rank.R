@@ -13,10 +13,10 @@ library(dplyr)
 library(data.table)
 
 # Read in files
-howdy<-fread("MERGED2014_15_PP.csv",select=4,col.names="Name")
+howdy<-fread("data/MERGED2014_15_PP.csv",select=4,col.names="Name")
 howdy$Ranking<-rep(NA,nrow(howdy))
 howdy$ID<-seq(1:nrow(howdy))
-ranking<-fread("ranking_forbes_2016.csv",skip=1)
+ranking<-fread("data/ranking_forbes_2016.csv",skip=1)
 
 # Merge the two datasets
 result1<-
@@ -29,11 +29,11 @@ result2<-result1%>%
   
 result<-bind_rows(result1,result2)%>%
   filter(!is.na(ID))%>%
-  arrange(Rank)
-  mutate(Rank=seq(1:nrow(result)))
+  arrange(Rank)%>%
+  mutate(Rank=seq(1:nrow(result))) %>%
   select(Rank,ID)
 
 # Write output
 output <- left_join(howdy,result,by="ID") %>%
-  write_csv(".../output/name_ranking.csv")
+  write_csv("output/name_ranking.csv")
 
