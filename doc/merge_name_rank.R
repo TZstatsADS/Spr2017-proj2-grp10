@@ -35,5 +35,6 @@ result<-bind_rows(result1,result2)%>%
 
 # Write output
 output <- left_join(howdy,result,by="ID") %>%
+  select(Name,Rank) %>%
   write_csv("output/name_ranking.csv")
 
