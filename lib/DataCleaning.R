@@ -28,6 +28,7 @@ educ_update$Major_History <- educ$CIP54BACHL
 #
 
 #ranking_data <- read.csv("../output/name_ranking.csv")
+# solve for comma slash problem
 ranking <- ranking[order(ranking$Name), ]
 a <- educ_update[order(educ_update$Name), ]
 a$Name <- gsub("-", ", ", a$Name)
