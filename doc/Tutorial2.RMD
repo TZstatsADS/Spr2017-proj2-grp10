@@ -20,7 +20,6 @@ library(lubridate)
 
 ## Install shiny
 ```{r install_shiny, eval=F}
-install.packages("shiny")
 library(shiny)
 runExample("01_hello")
 ```
@@ -76,7 +75,10 @@ library(choroplethrZip)
 zip_choropleth(count.df,
     title       = "2009 Manhattan housing sales",
     legend      = "Number of sales",
-    county_zoom = 36061)
+    county_zoom = 36061) # a county you want to center at
+# cut the values into quantile and then assign the color to the quantiles. 
+# default color is blue and blue has 8 levels
+
 ```
 
 ## 2009 Manhattan housing sales
@@ -99,6 +101,8 @@ mh2009.selgeo=
   select(starts_with("ADD"))%>%
   mutate(ADDRESS_Ext=paste(ADDRESS, "New York, NY", sep=","))%>%
   mutate_geocode(ADDRESS_Ext)
+
+# query google API to resolve an address to an longitute and altitute data
 ```
 
 ## Plot using longitude and latitude
@@ -121,11 +125,13 @@ A shiny app needs two files.
 
 ## Prepare input data for the shiny app
 ```{r data_shiny}
+# name of the chunk
 mh2009.use=
   mh2009%>%
   mutate(sale.month=month(as.Date(SALE.DATE, "%m/%d/%y")))%>%
   mutate(sale.price=ifelse(SALE.PRICE==0, NA, SALE.PRICE))%>%
   mutate(footage=ifelse(GROSS.SQUARE.FEET==0, NA, GROSS.SQUARE.FEET))%>%
+  # missing data is not necessarily NA, e.g. 99 means no answer in survey
   mutate(unit.price=sale.price/footage)%>%
   mutate(bldg.type=substr(BUILDING.CLASS.CATEGORY, 1, 2))%>%
   filter(bldg.type %in% c("10", "13", "25", "28"))%>%
