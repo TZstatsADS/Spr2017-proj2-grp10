@@ -1,11 +1,11 @@
-educ <- read.csv("MERGED2014_15_PP.csv", stringsAsFactors = F, header =T, fileEncoding="latin1")
+educ <- read.csv("MERGED2014_15_PP.csv")
 educ_update<- educ[, 4:7] 
 colnames(educ_update) <- c("Name", "City", "State", "Zip")
 educ_update$Latitude <- educ$LATITUDE
 educ_update$Longitude <- educ$LONGITUDE
 educ_update$ADMrate <- educ$ADM_RATE
 educ_update$Ownership <- educ$CONTROL
-educ_update$Setting <- educ$CCSIZSET # carneige classification -- size and setting
+educ_update$Citytype<- educ$LOCALE
 educ_update$SAT <- educ$SAT_AVG
 educ_update$AvgCost <- as.numeric(educ$COSTT4_A) #average cost of attendence
 # no unemployment rate
@@ -36,7 +36,9 @@ ranking_data <- ranking_data[order(ranking_data$Name), ] %>%
 # ranking <- ranking[order(ranking$Name), ]
 # a <- educ_update[order(educ_update$Name), ]
 # a$Name <- gsub("-", ", ", a$Name)
-total <- merge(ranking_data, educ_update, by = "Name") %>% arrange(Rank)
+total<- merge(ranking_data, educ_update, by="Name")
+total<- total[order(total$Rank),]
+rownames(total)<- seq(1:nrow(total))
 # ranking_edu <- total[!is.na(total$Rank), ]
 # a_1 <- apply(a, "Name", gsub, patt="-", replace=", ")
 write.csv(total, file = "DataWithRank.csv")
