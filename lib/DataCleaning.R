@@ -45,6 +45,14 @@ ranking_data <- ranking_data[order(ranking_data$Name), ] %>%  filter(!is.na(Rank
 total<- merge(ranking_data, educ_update, by="Name")
 total<- total[order(total$Rank),]
 rownames(total)<- seq(1:nrow(total))
+earnings_red<- merge(ranking_data, earning, by="Name")
+earnings_red<- earnings_red[order(earnings_red$Rank),]
+rownames(earnings_red)<- seq(1:nrow(earnings_red))
+earnings_red<- earnings_red[,-1]
+final<- merge(total, earnings_red, by="Rank")
+colnames(final)[2]<-"Name"
 # ranking_edu <- total[!is.na(total$Rank), ]
 # a_1 <- apply(a, "Name", gsub, patt="-", replace=", ")
 write.csv(total, file = "DataWithRank.csv")
+write.csv(final, file = "DataWithRANDE.csv")
+
