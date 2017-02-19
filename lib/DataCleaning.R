@@ -1,5 +1,9 @@
 library(dplyr)
-educ <- read.csv("MERGED2014_15_PP.csv",stringsAsFactors = F, header =T, fileEncoding="latin1")
+educ <- read.csv("MERGED2014_15_PP.csv")
+
+earning<- read.csv("Earning.csv", header = T)
+earning <- earning[, 2:3]
+
 educ_update<- educ[, 4:7] 
 colnames(educ_update) <- c("Name", "City", "State", "Zip")
 educ_update$URL <- educ$INSTURL
@@ -10,6 +14,7 @@ educ_update$Ownership <- educ$CONTROL
 educ_update$Citytype<- educ$LOCALE
 educ_update$SAT <- educ$SAT_AVG
 educ_update$AvgCost <- as.numeric(educ$COSTT4_A) #average cost of attendence
+educ_update$Earning <- earning_8
 # no unemployment rate
 educ_update$Major_agriculture <- educ$CIP01BACHL
 educ_update$Major_NatureResource <- educ$CIP03BACHL
