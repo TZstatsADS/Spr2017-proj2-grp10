@@ -1,5 +1,6 @@
 #Building on top of DataWithRank
 #Import crime and happiness datasets
+library("readr")
 crime<-read.csv("CrimeData_final.csv")
 happy<-read.csv("Happinessdata.csv")
 datarank<-read.csv("DataWithRank.csv")

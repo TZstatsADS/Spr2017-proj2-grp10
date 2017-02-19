@@ -1,6 +1,8 @@
-educ <- read.csv("MERGED2014_15_PP.csv")
+library(dplyr)
+educ <- read.csv("MERGED2014_15_PP.csv",stringsAsFactors = F, header =T, fileEncoding="latin1")
 educ_update<- educ[, 4:7] 
 colnames(educ_update) <- c("Name", "City", "State", "Zip")
+educ_update$URL <- educ$INSTURL
 educ_update$Latitude <- educ$LATITUDE
 educ_update$Longitude <- educ$LONGITUDE
 educ_update$ADMrate <- educ$ADM_RATE
@@ -30,8 +32,7 @@ write.csv(educ_update, file = "CleanData.csv")
 #
 
 ranking_data <- read.csv("../output/name_ranking.csv")
-ranking_data <- ranking_data[order(ranking_data$Name), ] %>%
-  filter(!is.na(Rank))
+ranking_data <- ranking_data[order(ranking_data$Name), ] %>%  filter(!is.na(Rank))
 # solve for comma slash problem
 # ranking <- ranking[order(ranking$Name), ]
 # a <- educ_update[order(educ_update$Name), ]
