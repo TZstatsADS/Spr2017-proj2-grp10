@@ -13,10 +13,10 @@ library(dplyr)
 library(data.table)
 
 # Read in files
-howdy<-fread("data/MERGED2014_15_PP.csv",select=4,col.names="Name")
+howdy<-fread("MERGED2014_15_PP.csv",select=4,col.names="Name")
 howdy$Ranking<-rep(NA,nrow(howdy))
 howdy$ID<-seq(1:nrow(howdy))
-ranking<-fread("data/ranking_forbes_2016.csv",skip=1)
+ranking<-fread("ranking_forbes_2016.csv",skip=1)
 
 # Merge the two datasets
 result1<-
