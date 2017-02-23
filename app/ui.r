@@ -16,7 +16,7 @@ library(leaflet)
 library(shinydashboard)
 
 dashboardPage(
-  dashboardHeader(title='USA Education'),
+  dashboardHeader(title='UNI MATE'),
   skin = "purple",
   dashboardSidebar(
     selectInput("major", label = "Major", 
@@ -42,8 +42,9 @@ dashboardPage(
     fluidRow(
       tabBox(width=12,
              tabPanel(title="Map",width = 12,solidHeader = T,leafletOutput("map")),
-             tabPanel(title="bar chart",width=12,plotlyOutput("bchart")),
-             tabPanel(title="density",plotlyOutput("2"))),
+             tabPanel(title="ADM Rate",width=12,plotlyOutput("ADMchart")),
+             tabPanel(title="Avg Cost",plotlyOutput("cost")), 
+             tabPanel(title="Earn",width=12,plotlyOutput("earnchart"))),
       
       
       mainPanel(
