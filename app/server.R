@@ -25,7 +25,7 @@ library(dtplyr)
 
 shinyServer(function(input, output){
   #read data
-  schdata<- read.csv("../data/final3data.csv")
+  schdata<- read.csv("final3data.csv")
   #subset data depending on user input in Shiny app
   
   major<-reactive({
@@ -64,7 +64,7 @@ shinyServer(function(input, output){
   
   output$tablerank = renderDataTable({
     final1dat<-v3()
-    final1dat[,c(3,4,13,14,27,29)]
+    final1dat[,c(3,4,2, 10, 13,14,27,28, 29)]
   },options = list(orderClasses = TRUE))
   
   
@@ -76,18 +76,18 @@ shinyServer(function(input, output){
     w4<-input$CrimeRate
     w5<-input$HappyRank
     final2dat<-data %>%
-      select(Name,Earn, ADMrate,Rank,AvgCost,CrimeRate,HappyRank)%>%
-      arrange(Earn,Rank)%>%
+      select(Name,Earn, ADMrate,QSRank,AvgCost,CrimeRate,HappyRank, State, SAT)%>%
+      arrange(Earn,QSRank)%>%
       mutate(Earn1=seq(1:nrow(data)))%>%
-      arrange(AvgCost,Rank)%>%
+      arrange(AvgCost,QSRank)%>%
       mutate(AvgCost1=seq(1:nrow(data)))%>%
-      arrange(CrimeRate,Rank)%>%
+      arrange(CrimeRate,QSRank)%>%
       mutate(CrimeRate1=seq(1:nrow(data)))%>%
-      arrange(HappyRank,Rank)%>%
+      arrange(HappyRank,QSRank)%>%
       mutate(HappyRank1=seq(1:nrow(data))) %>%
-      mutate(new_rank=w1*Earn1+ w2*Rank+w3*AvgCost1+w4*CrimeRate1+w5*HappyRank1) %>%
+      mutate(new_rank=w1*Earn1+ w2*QSRank+w3*AvgCost1+w4*CrimeRate1+w5*HappyRank1) %>%
       arrange(new_rank)
-    final2dat[,c(4,1,2,3,5,7)]
+    final2dat[,c(4,1,8, 3, 9, 5, 2, 6,7)]
   },options = list(orderClasses = TRUE))
   
   
@@ -141,8 +141,21 @@ shinyServer(function(input, output){
       geom_histogram(aes(y = ..density..), alpha = 0.7, fill = "#56B4E9") +
       geom_density(fill = "#CC79A7", alpha = 0.5) +
       theme(panel.background = element_rect(fill = '#ffffff')) + 
-      ggtitle("Density of Earning with Histogram overlay")
+      ggtitle("Density of Earnings with Histogram overlay")
     ggplotly(a)
+  }
+  )
+  
+  output$crimer <- renderPlotly({
+    edu <- v3()
+    cr <- edu %>% select(Name, CrimeRate) %>% arrange(desc(CrimeRate)) 
+    cr$CrimeRate <- as.numeric(as.character(cr$CrimeRate))
+    d <- ggplot(data = cr,aes(x=CrimeRate)) + 
+      geom_histogram(aes(y = ..density..), alpha = 0.7, fill = "#56B4E9") +
+      geom_density(fill = "#CC79A7", alpha = 0.5) +
+      theme(panel.background = element_rect(fill = '#ffffff')) + 
+      ggtitle("Density of Crime Rate with Histogram overlay")
+    ggplotly(d)
   }
   )
 })
