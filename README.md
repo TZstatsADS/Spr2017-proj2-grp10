@@ -6,13 +6,13 @@
 
 + Team #10
 
-### Team Members
+### Team Members (Alphabetical ordering of family name)
 
-+ Jiahui Tian
-+ Yue Jin
-+ Qingyuan Zhang 
 + Tongyue Liu
++ Yue Jin
 + Yijia Pan
++ Jiahui Tian
++ Qingyuan Zhang 
 
 ### Link: 
 
@@ -22,7 +22,7 @@ Now, more and more international students are choosing to study in America. It's
 
 ### Project summary
 
-This project explores and visualizes 272 universities in America by using the data on ([College Scorecard Database](https://collegescorecard.ed.gov/data/documentation/)), ([2016 Forbes Ranking](data/ranking_forbes_2016.csv)), ([HappyScore Data](data/Happinessdata.csv)) and ([Crime Data](CrimeData_final.csv)). We created a Shiny App to help users discover and compare universities. 
+This project explores and visualizes 272 universities in America by using the data on ([College Scorecard Database](https://collegescorecard.ed.gov/data/documentation/)), ([2016 Forbes Ranking](data/ranking_forbes_2016.csv)), ([HappyScore Data](data/Happinessdata.csv)) and ([Crime Data](data/CrimeData_final.csv)). We created a Shiny App to help users discover and compare universities. 
 
 + Filter & Rank——easily discover and compare the universities that meet users' requirements
 
