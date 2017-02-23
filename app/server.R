@@ -25,7 +25,7 @@ library(dtplyr)
 
 shinyServer(function(input, output){
   #read data
-  schdata<- read.csv("final3data.csv")
+  schdata<- read.csv("../data/final3data.csv")
   #subset data depending on user input in Shiny app
   
   major<-reactive({
