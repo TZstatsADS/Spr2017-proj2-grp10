@@ -13,7 +13,7 @@ Sample project README statement.
 
 Project 2 Open Data App - an RShiny app development project
 
-Team members: Jiahui Tian, Yue Jin, Qingyuan Zhang, Tongyue Liu, Yijia Pan
+Team members: Jiahui Tan, Yue Jin, Qingyuan Zhang, Tongyue Liu, Yijia Pan
 
 Summary: This project explores and visualizes 272 universities in America by using the data on ([College Scorecard Database](https://collegescorecard.ed.gov/data/documentation/)) and ([2016 Forbes Ranking](data/ranking_forbes_2016.csv)). We created a Shiny App to help users discover and compare universities. 
 
