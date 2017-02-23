@@ -1,40 +1,63 @@
+packages.used=c("shiny", "plotly", "shinydashboard", "leaflet")
+
+# check packages that need to be installed.
+packages.needed=setdiff(packages.used, 
+                        intersect(installed.packages()[,1], 
+                                  packages.used))
+# install additional packages
+if(length(packages.needed)>0){
+  install.packages(packages.needed, dependencies = TRUE)
+}
+
+
 library(shiny)
+library(plotly)
+library(leaflet)
+library(shinydashboard)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("2009 Manhattan Housing Sales"),
-  
-  # Sidebar with a selector input for neighborhood
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("nbhd", label = h5("Choose a Manhattan Neighborhood"), 
-                         choices = list("all neighborhoods"=0,
-                                        "Central Harlem"=1, 
-                                        "Chelsea and Clinton"=2,
-                                        "East Harlem"=3, 
-                                        "Gramercy Park and Murray Hill"=4,
-                                        "Greenwich Village and Soho"=5, 
-                                        "Lower Manhattan"=6,
-                                        "Lower East Side"=7, 
-                                        "Upper East Side"=8, 
-                                        "Upper West Side"=9,
-                                        "Inwood and Washington Heights"=10), 
-                         selected = 0)
-      #sliderInput("p.range", label=h3("Price Range (in thousands of dollars)"),
-      #            min = 0, max = 20000, value = c(200, 10000))
-    ),
-    # Show two panels
-    mainPanel(
-      #h4(textOutput("text")),
-      h3(code(textOutput("text1"))),
-      tabsetPanel(
-        # Panel 1 has three summary plots of sales. 
-        tabPanel("Sales summary", plotOutput("distPlot")), 
-        # Panel 2 has a map display of sales' distribution
-        tabPanel("Sales map", plotOutput("distPlot1")))
+dashboardPage(
+  dashboardHeader(title='UNI-MATE'),
+  skin = "purple",
+  dashboardSidebar(
+    selectInput("major", label = "Major", 
+                choices = c("None" ,"Agriculture"="agriculture", "Architecture",
+                            "Biology"="Bio","Business", "Computer Science"="CS", 
+                            "Education"="Edu", "Engineering", "History", "Math and Statistics"="MathStat",
+                            "Nature Resources"="NatureResource", "Psychology", "Social Science"="SocialScience"), selected = "None"),
+    selectInput("schtype", label="Type of School",
+                choices = c("None","Private for-profit", "Private nonprofit", "Public"),selected= "None"),
+    selectInput("citytype", label = "Type of City",
+                choices = c("None", "City", "Rural", "Suburb","Town"),selected = "None"),
+    hr(),
+    verbatimTextOutput("select"),
+    sliderInput("rank","Academic performance",0,100,20),
+    sliderInput("AvgCost","Average Cost of Attendance",0, 100,20),
+    sliderInput("Earn","Earnings & Jobs",0, 100, 20),
+    sliderInput("CrimeRate","Safety",0, 100, 20),
+    sliderInput("HappyRank","Happiness/Life quality",0, 100, 20),
+    submitButton("Submit",width='100%')
+    
+  ),
+  dashboardBody(
+    fluidRow(
+      tabBox(width=12,
+             tabPanel(title="Map",width = 12,solidHeader = T,leafletOutput("map")),
+             tabPanel(title="ADM Rate",width=12,plotlyOutput("ADMchart")),
+             tabPanel(title="Avg Cost",plotlyOutput("cost")), 
+             tabPanel(title="Earnings",width=12,plotlyOutput("earnchart")),
+             tabPanel(title="Crime Rate",plotlyOutput("crimer"))),
+      
+      
+      mainPanel(
+        tabsetPanel(
+          tabPanel('Ranking',
+                   dataTableOutput("tablerank"),
+                   tags$style(type="text/css", '#myTable tfoot {display:none;}')),
+          tabPanel('Personalized Ranking',
+                   dataTableOutput("tablerank2"),
+                   tags$style(type="text/css", '#myTable tfoot {display:none;}'))
+        )
+      )
     )
- )
-))
-
+  )
+)
