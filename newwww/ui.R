@@ -1,5 +1,10 @@
+library(shiny)
+
+library(shinydashboard)
+
 dashboardPage(
-  dashboardHeader(title='UNI-MATE'),
+  
+  dashboardHeader(title='USA Education'),
   skin = "purple",
   dashboardSidebar(
     selectInput("major", label = "Major", 
@@ -15,32 +20,36 @@ dashboardPage(
     verbatimTextOutput("select"),
     sliderInput("rank","Academic performance",0,100,20),
     sliderInput("AvgCost","Average Cost of Attendance",0, 100,20),
-    sliderInput("Earn","Earnings & Jobs",0, 100, 20),
-    sliderInput("CrimeRate","Safety",0, 100, 20),
-    sliderInput("HappyRank","Happiness/Life quality",0, 100, 20),
+    sliderInput("Earn","Earnings& Jobs",0, 100, 20),
+    sliderInput("CrimeRate","Social Security",0, 100, 20),
+    sliderInput("HappyRank","Life quality",0, 100, 20),
     submitButton("Submit",width='100%')
     
   ),
   dashboardBody(
     fluidRow(
-      tabBox(width=12,
-             tabPanel(title="Map",width = 12,solidHeader = T,leafletOutput("map")),
-             tabPanel(title="ADM Rate",width=12,plotlyOutput("ADMchart")),
-             tabPanel(title="Avg Cost",plotlyOutput("cost")), 
-             tabPanel(title="Earnings",width=12,plotlyOutput("earnchart")),
-             tabPanel(title="Crime Rate",plotlyOutput("crimer"))),
+      tabBox(width=12,tabPanel("Map",
+                               width = 12,solidHeader = T,leafletOutput("map")),
+              tabPanel(title="bchart",width=12,plotlyOutput("bchart")),
+             tabPanel(title="density",plotlyOutput ("2"))),
       
       
       mainPanel(
+        
         tabsetPanel(
+  
           tabPanel('Ranking',
                    dataTableOutput("tablerank"),
                    tags$style(type="text/css", '#myTable tfoot {display:none;}')),
+          
           tabPanel('Personalized Ranking',
                    dataTableOutput("tablerank2"),
                    tags$style(type="text/css", '#myTable tfoot {display:none;}'))
+          
+          
+
+          
         )
-      )
-    )
-  )
-)
+        
+        
+      ))))

@@ -1,28 +1,3 @@
-packages.used=c("dplyr", "plotly", "shiny", "leaflet", "scales", 
-                "lattice", "htmltools", "maps", "data.table", 
-                "dtplyr")
-
-# check packages that need to be installed.
-packages.needed=setdiff(packages.used, 
-                        intersect(installed.packages()[,1], 
-                                  packages.used))
-# install additional packages
-if(length(packages.needed)>0){
-  install.packages(packages.needed, dependencies = TRUE)
-}
-
-
-library(shiny)
-library(leaflet)
-library(scales)
-library(lattice)
-library(dplyr)
-library(htmltools)
-library(maps)
-library(plotly)
-library(data.table)
-library(dtplyr)
-
 shinyServer(function(input, output){
   #read data
   schdata<- read.csv("final3data.csv")
