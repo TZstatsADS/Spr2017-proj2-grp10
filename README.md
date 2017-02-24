@@ -41,9 +41,9 @@ Four plots. There are four interacitve density plots based on the filtered data.
 
 ### Outlook
 
-![screenshot](doc/360截图20170223223908460.jpg)
+![screenshot](doc/cover.jpg)
 
-![screenshot](doc/360截图20170223223922978.jpg)
+![screenshot](doc/Plot.tiff)
 
 ### Note 
 To reproduce our work, clone the whole repository onto your own local machine and then set the working directory to [`app`] folder, in your R console, run this code:
