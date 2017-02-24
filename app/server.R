@@ -1,3 +1,28 @@
+packages.used=c("dplyr", "plotly", "shiny", "leaflet", "scales", 
+                "lattice", "htmltools", "maps", "data.table", 
+                "dtplyr")
+
+# check packages that need to be installed.
+packages.needed=setdiff(packages.used, 
+                        intersect(installed.packages()[,1], 
+                                  packages.used))
+# install additional packages
+if(length(packages.needed)>0){
+  install.packages(packages.needed, dependencies = TRUE)
+}
+
+
+library(shiny)
+library(leaflet)
+library(scales)
+library(lattice)
+library(dplyr)
+library(htmltools)
+library(maps)
+library(plotly)
+library(data.table)
+library(dtplyr)
+
 shinyServer(function(input, output){
   #read data
   schdata<- read.csv("final3data.csv")
@@ -70,7 +95,7 @@ shinyServer(function(input, output){
     urls <- paste0(as.character("<b><a href='http://"), as.character(v3()$URL), "'>", as.character(v3()$Name),as.character("</a></b>"))
     content <- paste(sep = "<br/>",
                      urls, 
-                     paste("Rank:", as.character(v3()$Rank))
+                     paste("Rank:", as.character(v3()$QSRank))
     )
     
     mapStates = map("state", fill = TRUE, plot = FALSE)
@@ -120,7 +145,14 @@ shinyServer(function(input, output){
     ggplotly(a)
   }
   )
+output$text0<- renderText({"Choose the following:"})
+output$explain1<- renderText({"Brief introduction of this app: This application aims to help users to discover and compare schools in a more efficient manner."})
+output$explain2<- renderText({"1. Choose the first 3 options to do some basic filtering of schools, and obtain their rankings (based on the QS world ranking). View them on an interactive map, and also get a clearer picture of how certain relevant factors (i.e. Earnings, Cost of Attendance) of the school you are interested in fare in comparison to other schools from the density plots."})
+output$explain3<- renderText({"2. If you feel like QS ranking is not your thing, feel free to utilize our slider inputs to rate how highly you value certain aspects like safety and happiness. Obtain your own personalized ranking and compare them to the QR rankings!"})  
+
+output$text1<- renderText({"Please rate how highly you value the following:"})
   
+  output$introduction<- renderText({"This application is created by Tongyue Liu, Yue Jin, Yijia Pan, Jia Hui Tan, and Qingyuan Zhang in Spring 2017. We are a group of Columbia MA Statistics students looking to make the world an easier place to live in, and we are taking a tiny step here by designing this application to help simplify the college decision making process for fellow users :)"})
   output$crimer <- renderPlotly({
     edu <- v3()
     cr <- edu %>% select(Name, CrimeRate) %>% arrange(desc(CrimeRate)) 
