@@ -8,11 +8,12 @@
 
 ### Team Members (Alphabetical ordering of family name)
 
-+ Tongyue Liu
-+ Yue Jin
-+ Yijia Pan
-+ Jia Hui Tan
-+ Qingyuan Zhang 
++ Tongyue Liu ([`Tongyue Liu`](https://github.com/ltyue))
++ Yue Jin ([`Yue Jin`](https://github.com/yuejin123))
++ Yijia Pan ([`Yijia Pan`](https://github.com/panyijia1269))
++ Jia Hui Tan ([`Jiahui Tan`](https://github.com/jt2929))
++ Qingyuan Zhang([`amandazhang`](https://github.com/amandazhang))
+ 
 
 ### Link: https://jiahuitan.shinyapps.io/unimate/
 
