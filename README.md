@@ -11,7 +11,7 @@
 + Tongyue Liu
 + Yue Jin
 + Yijia Pan
-+ Jiahui Tian
++ Jia Hui Tan
 + Qingyuan Zhang 
 
 ### Link: 
