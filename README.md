@@ -1,6 +1,6 @@
 # Project 2: Open Data App - an RShiny app development project
 
-## Project Title: Un-Mate: Find your match! 
+## Project Title: UNI-MATE: Find your match! 
 
 + Term: Spring 2017
 
@@ -39,6 +39,8 @@ Map: Every university that meet users' requirments will show on the map. After c
 Four plots. There are four interacitve density plots based on the filtered data. They will show the average of "Admission Rate", "Average Cost", "Crime Rate" and "Earnings" of those selected universities.
 
 ### Outlook
+
+![screenshot](doc/360截图20170223223908460.jpg)
 
 ![screenshot](doc/360截图20170223223908460.jpg)
 
