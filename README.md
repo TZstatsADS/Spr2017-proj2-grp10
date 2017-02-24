@@ -42,7 +42,7 @@ Four plots. There are four interacitve density plots based on the filtered data.
 
 ![screenshot](doc/360截图20170223223908460.jpg)
 
-![screenshot](doc/360截图20170223223908460.jpg)
+![screenshot](doc/360截图20170223223922978.jpg)
 
 ### **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
