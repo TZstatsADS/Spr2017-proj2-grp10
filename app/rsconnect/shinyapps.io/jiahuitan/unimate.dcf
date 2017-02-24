@@ -1,0 +1,11 @@
+name: unimate
+title: unimate
+account: jiahuitan
+server: shinyapps.io
+appId: 158905
+bundleId: 722968
+url: https://jiahuitan.shinyapps.io/unimate/
+when: 1487904203.3627
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md
