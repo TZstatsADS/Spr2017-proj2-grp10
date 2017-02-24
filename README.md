@@ -19,7 +19,7 @@
 
 ### Background
 
-More and more international students are choosing to study in America today. It is reported that more than 1,000,000 international students studied at U.S. colleges and universities in 2016/2017. However, many of them complain that it is difficult to find satisfying universities when they apply for schools. There are two reasons. First, it may cost them a lot of time to collect all the information about these universities online. Second, though they can get some information online, it's still hard for them to get exact details and comprehensively learn about these universities. In order to solve these problems, our team have developed an application called Uni-Mate, which enables international students to discover and compare schools in an more efficient manner. It helps users to filter and rank universities based on their own preferences and output interactive map & plots to show the relevant features of these universities.
+More and more international students are choosing to study in America today. It is reported that more than 1,000,000 international students studied at U.S. colleges and universities in 2016/2017. However, the college search process is often a huge feat with all the information available everywhere in today's digital age. It is hard to sieve through all the information overload, to collect various statistics, and to collate and compare them with ease. Exact details are hard to come by easily and there is often too much inertia to sieve through thousands and thousands of datasets. In order to help students out with these issues, our team have developed an application called the Uni-Mate. This applications hopes to enable international students to discover and compare schools in an more efficient manner. It provides the user with a simplified platform to filter and rank universities based on their own preferences, and output an interactive map & various density plots that would allow them to view and compare selected statistics of the various universities. 
 
 In a nutshell, our overall philosophy behind the creation of this application is to provide an alternative, more lighthearted and personalized platform to simplify the college decision making process for college applicants, and make it easier to obtain information amongst the sea of madness. 
 
@@ -29,15 +29,15 @@ This project explores and visualizes 272 universities in America by using the da
 
 + Filter & Rank——easily discover and compare the universities that meet user's requirements
 
-Two filter parts. One part is the basic filter: they can choose universities based on "Major", "Type of School" and "Type of City". The other part is the advanced filter: they can give their weights to "Academic Performance", "Average Cost", "Earning & Jobs", "Social Security" and "Life Quality", based on how important they think these factors matter to them. 
+Two filter parts. One part is the basic filter: the user can choose universities based on "Major", "Type of School" and "Type of City". The other part is the advanced filter: they can give their weights to "Academic Performance", "Average Cost", "Earning & Jobs", "Social Security" and "Life Quality", based on how important they think these factors matter to them. 
 
-Two ranking options. One option is based on "The 2016 Forbes University Rankings". The other one is using the weights the user gave to calculate the rank of these universities - ultimately producing a personalized ranking. 
+Two ranking options. One option is based on the Forbes University Rankings. The other one is using the weights the user gave to calculate the rank of these universities - ultimately producing a personalized ranking. 
 
 + Map & Plot——visualization of relevant features of the universities 
 
-Map: Every university that meet users' requirments will show on the map. After clicking on the university, the URL of the school will be available as well as the QS rank of the school. 
+Map: Every university that meet the user's requirments will show on the map. After clicking on the university, both the URL and Forbes rank of the school will be in view.
 
-Four plots. There are four interacitve density plots based on the filtered data. They will show the average of "Admission Rate", "Average Cost", "Crime Rate" and "Earnings" of those selected universities.
+Plots: There will be four interacitve density plots based on the filtered data. These will show the average of "Admission Rate", "Average Cost", "Crime Rate" and "Earnings" of the selected(filtered) universities.
 
 ### Outlook
 
