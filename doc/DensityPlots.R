@@ -3,7 +3,7 @@ library(dplyr)
 library(plotly)
 library(ggplot2)
 # First read in data
-edu <- read.csv("final3data.csv")
+edu <- read.csv("../data/final3data.csv")
 # Density curve for Earning:
 earn <- edu %>% select(Name, Earn) %>% arrange(desc(Earn)) 
 earn$Earn <- as.numeric(as.character(earn$Earn))

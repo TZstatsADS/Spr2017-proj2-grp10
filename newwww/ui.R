@@ -28,44 +28,28 @@ dashboardPage(
   ),
   dashboardBody(
     fluidRow(
-      column(width=8,box(title="Map",width = NULL,solidHeader = T,leafletOutput("map"))),
-      #column(width=4,box(title="Rank",width = NULL,solidHeader = T,
-      #leafletOutput("rank"), dataTableOutput("tablerank"), textInput("text", "Rank range:"),br(),
-      #actionButton("apply","Apply")))
-      #),
-      hr(),
-      fluidRow(
-        box(
-          title="barplot",width = 4, background = "navy",
-          "A box with a solid black background"
-        ),
-        box(
-          title = "density", width = 4, background = "navy",
-          "A box with a solid light-blue background"
-        ),
-        box(
-          title = "Summary",width = 4, background = "navy",
-          "A box with a solid maroon background"
-        )
-      ),
-      hr(),
-      #pop-up
-      absolutePanel(id = "controls", fixed= TRUE, draggable = TRUE,
-                    top = 120, left = "auto", right = 20, bottom = "auto", width = 320, height = "auto",
-                    textOutput("text",inline = T),
-                    plotOutput("chart")
-                    
-                    
-      ),
+      tabBox(width=12,tabPanel("Map",
+                               width = 12,solidHeader = T,leafletOutput("map")),
+              tabPanel(title="bchart",width=12,plotlyOutput("bchart")),
+             tabPanel(title="density",plotlyOutput ("2"))),
+      
+      
       mainPanel(
+        
         tabsetPanel(
-          tabPanel('General',
-                   fluidRow(column(7,leafletOutput("general",height=700)),
-                            column(5,leafletOutput("density",height=700)))
-          ),
+  
           tabPanel('Ranking',
                    dataTableOutput("tablerank"),
+                   tags$style(type="text/css", '#myTable tfoot {display:none;}')),
+          
+          tabPanel('Personalized Ranking',
+                   dataTableOutput("tablerank2"),
                    tags$style(type="text/css", '#myTable tfoot {display:none;}'))
-        )
-      ))))
+          
+          
 
+          
+        )
+        
+        
+      ))))

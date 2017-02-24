@@ -11,10 +11,22 @@ Below is an example. If no contribution statement is provided, we will insert a 
 ---
 Sample project README statement.
 
-Project xxx
+Project 2 Open Data App - an RShiny app development project
 
-Team members: Avi Bond, Comma Deed, En Funn, Gem Hon
+Team members: Jiahui Tan, Yue Jin, Qingyuan Zhang, Tongyue Liu, Yijia Pan
 
-Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
+Summary: This project explores and visualizes 272 universities in America by using the data on ([College Scorecard Database](https://collegescorecard.ed.gov/data/documentation/)) and ([2016 Forbes Ranking](data/ranking_forbes_2016.csv)). We created a Shiny App to help users discover and compare universities. 
 
-[Contribution Statement] AB, CD, EF and GH designed the study. AB and CD developed baseline classification model for evaluation. EF and GH explored feature engineering for improving the baseline model. AB, EF and GH discussed and designed the model evaluation protocol. CD carried out the computation for model evaluation. All team members contributed to the GitHub repository and prepared the presentation. All team members approve our work presented in our GitHub repository including this contribution statement.
++ Filter & Rank——easily discover and compare the universities that meet users' requirements
+
+Two filter parts. One part is the basic filter: they can choose universities upon "Major", "Type of School" and "Type of City". The other part is the advanced filter: they can give their weights to "Academic Performance", "Average Cost", "Earning & Jobs", "Social Security" and "Life Quality". 
+
+Two ranking options. One option is based on "The 2016 Forbes University Rankings". The other one is using the weights users have given before to calculate the rank of these universities. 
+
++ Map & Plot——vividly show the characters of universities
+
+One map. Every university that meet users' requirments will show on the map. After clicking on the university, the website of it will be shown. 
+
+Four plots. There are four interacitve density plots. They will show the average of "Admission Rate", "Average Cost", "Crime Rate Around" and "Salary after Attending" of those selected universities.
+
+[Contribution Statement] Yijia Pan, Jin Yue and Jiahui Tian respectively found the dataset of college scorecard dataset, university's ranking dataset and crime & happiness score dataset. All team members designed the content of this App. Jiahui Tian, Jin Yue and Qingyuan Zhang merged the data and cleaned the data. Tongyue Liu wrote the fiter, map, ranking shiny UI part. Jiahui Tian wrote the density plot Shiny UI part. Yue Jin wrote the ranking server part. Qingyuan Zhang and Yijia Pan draw the map and density plots and wrote the map server part. Jiahui Tian and Qingyuan Zhang wrote the density plot server part. Yijia Pan summary the folder. Jiahui Tian gave the presentation.
