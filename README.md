@@ -47,6 +47,9 @@ Four plots. There are four interacitve density plots based on the filtered data.
 
 ### Note 
 To reproduce our work, clone the whole repository onto your own local machine and then set the working directory to [`app`] folder, in your R console, run this code:
+```R
+runApp(getwd())
+```
 
 
 ### **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
